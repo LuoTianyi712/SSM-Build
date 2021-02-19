@@ -8,6 +8,13 @@
     <artifactId>SSM-Build</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.compilerVersion>11</maven.compiler.compilerVersion>
+    </properties>
+
+    <!--依赖-->
     <dependencies>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
@@ -95,7 +102,7 @@
         </dependency>
     </dependencies>
 
-    <!--资源过滤z-->
+    <!--资源过滤-->
     <build>
         <resources>
             <resource>

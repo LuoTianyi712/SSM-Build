@@ -2,8 +2,11 @@ package com.neusoft.service;
 
 import com.neusoft.dao.BookMapper;
 import com.neusoft.pojo.Books;
+import com.neusoft.service.BookService;
 
-public class BookServiceImpl implements BookService{
+import java.util.List;
+
+public class BookServiceImpl implements BookService {
 
     // Service 调用 Dao 层
     private BookMapper bookMapper;
@@ -28,7 +31,7 @@ public class BookServiceImpl implements BookService{
         return bookMapper.queryBookById(id);
     }
 
-    public Books queryAllBook() {
+    public List<Books> queryAllBook() {
         return bookMapper.queryAllBook();
     }
 }
