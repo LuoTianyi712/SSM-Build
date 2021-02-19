@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class BookController {
     }
 
     // 跳转到增加书籍页面
-    @RequestMapping("/toAddBook")
+    @RequestMapping("/toAddPage")
     public String toAddPage(){
         return "addBook";
     }
@@ -36,8 +37,38 @@ public class BookController {
     @RequestMapping("/addBook")
     public String addBook(Books books){
         System.out.println("addBook: "+books);
-        bookService.addBook(books);
+        if (bookService.addBook(books) >0){
+            System.out.println("add book success");
+        }
         // 重定向到allBook请求
+        return "redirect:/book/allBook";
+    }
+
+    // 跳转到修改书籍页面
+    @RequestMapping("/toUpdatePage")
+    public String toUpdatePage(int id, Model model){
+        Books books = bookService.queryBookById(id);
+        model.addAttribute("books",books);
+        return "updateBook";
+    }
+
+    //修改书籍
+    @RequestMapping("/updateBook")
+    public String updateBook(Books books){
+        System.out.println("updateBooks:"+books);
+        if (bookService.updateBookById(books) > 0) {
+            System.out.println("update success");
+        }else {
+            System.out.println("false");
+        }
+        return "redirect:/book/allBook";
+    }
+
+    @RequestMapping("/deleteBook/{bookId}")
+    public String deleteBook(@PathVariable("bookId") int id){
+        if (bookService.deleteBookById(id) > 0) {
+            System.out.println("delete success");
+        }
         return "redirect:/book/allBook";
     }
 }

@@ -34,7 +34,7 @@
 <%--------------------------------------------------------------------------------------------------------------------%>
                 <div class="row">
                     <div class="col-md-4 column">
-                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/toAddBook">新增书籍</a>
+                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/toAddPage">新增书籍</a>
                     </div>
                 </div>
 <%--------------------------------------------------------------------------------------------------------------------%>
@@ -49,6 +49,7 @@
                                 <th>书籍名称</th>
                                 <th>书籍数量</th>
                                 <th>书籍详情</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <%--从数据库中查询--%>
@@ -56,12 +57,17 @@
                         <%--<c:if test="${list.size() == 3}">
                             <h1>111111111</h1>
                         </c:if>--%>
-                            <c:forEach items="${list}" var="b">
+                            <c:forEach items="${list}" var="book">
                                 <tr>
-                                    <td>${b.bookID}</td>
-                                    <td>${b.bookName}</td>
-                                    <td>${b.bookCounts}</td>
-                                    <td>${b.detail}</td>
+                                    <td>${book.bookID}</td>
+                                    <td>${book.bookName}</td>
+                                    <td>${book.bookCounts}</td>
+                                    <td>${book.detail}</td>
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/book/toUpdatePage?id=${book.bookID}">修改</a>
+                                        &nbsp; | &nbsp;
+                                        <a href="${pageContext.request.contextPath}/book/deleteBook/${book.bookID}">删除</a>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </tbody>

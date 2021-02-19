@@ -15,7 +15,7 @@
 
     <update id="updateBookById" parameterType="Books">
         update ssmbuild.books
-        set bookName = #{bookName},bookCounts=#{bookCount},detail=#{detail}
+        set bookName = #{bookName},bookCounts=#{bookCounts},detail=#{detail}
         where bookID=#{bookID};
     </update>
 
