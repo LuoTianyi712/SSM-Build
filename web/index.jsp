@@ -13,7 +13,7 @@
 
       a{
         text-decoration: none;
-        color: black;
+        color: snow;
         font-size: 18px;
       }
 
@@ -32,7 +32,7 @@
   <body>
 
   <h3>
-    <a href="${pageContext.request.contextPath}/book/allBook">进入书籍页面</a>
+    <a href="${pageContext.request.contextPath}/book/allBook" >进入书籍页面</a>
   </h3>
 
   </body>

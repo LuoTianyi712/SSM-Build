@@ -17,7 +17,7 @@
         druid
         hikari
     -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="${mysql.driver}"/>
         <property name="jdbcUrl" value="${mysql.url}"/>
         <property name="user" value="${mysql.username}"/>

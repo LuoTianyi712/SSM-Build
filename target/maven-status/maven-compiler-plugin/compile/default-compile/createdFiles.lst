@@ -1,0 +1,5 @@
+com\neusoft\pojo\Books.class
+com\neusoft\service\BookServiceImpl.class
+com\neusoft\controller\BookController.class
+com\neusoft\dao\BookMapper.class
+com\neusoft\service\BookService.class
