@@ -36,6 +36,20 @@
                     <div class="col-md-4 column">
                         <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/toAddPage">新增书籍</a>
                     </div>
+                    <div class="col-md-4 column">
+
+                    </div>
+
+                    <div class="col-md-4 column">
+                        <%--查询书籍--%>、
+                        <form action="${pageContext.request.contextPath}/book/queryBook" method="post" style="float: right">
+                            <label>
+                                <input name="queryText" content="history" type="text" class="form-control saveHistory" placeholder="请输入要查询的编号或名称">
+<%--                                <input type="submit" value="查询" class="btn btn-primary">--%>
+                            </label>
+                            <button type="submit" class="btn btn-primary">查询</button>
+                        </form>
+                    </div>
                 </div>
 <%--------------------------------------------------------------------------------------------------------------------%>
             </div>

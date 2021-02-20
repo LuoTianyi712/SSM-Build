@@ -9,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/book")
@@ -52,7 +55,7 @@ public class BookController {
         return "updateBook";
     }
 
-    //修改书籍
+    // 修改书籍
     @RequestMapping("/updateBook")
     public String updateBook(Books books){
         System.out.println("updateBooks:"+books);
@@ -64,11 +67,47 @@ public class BookController {
         return "redirect:/book/allBook";
     }
 
+    // 删除书籍
     @RequestMapping("/deleteBook/{bookId}")
     public String deleteBook(@PathVariable("bookId") int id){
         if (bookService.deleteBookById(id) > 0) {
             System.out.println("delete success");
         }
         return "redirect:/book/allBook";
+    }
+
+//    // 查询书籍
+//    @RequestMapping("/queryBook")
+//    public String queryBook(String queryBookName, Model model){
+//        List<Books> booksList = bookService.queryBookByName(queryBookName);
+//        if (queryBookName.isEmpty()) {
+//            return "redirect:/book/allBook";
+//        } else if (booksList == null)
+//        {
+//            return "allBook";
+//        }else {
+//            model.addAttribute("list",booksList);
+//            return "allBook";
+//        }
+//    }
+
+    @RequestMapping("/queryBook")
+    public String queryBooksWhere(String queryText, Model model){
+
+        HashMap<Object, Object> map = new HashMap<>();
+
+        map.put("bookID",queryText);
+        map.put("bookName",queryText);
+
+        List<Books> booksList = bookService.queryBooks(map);
+        if (queryText.isEmpty()) {
+            return "redirect:/book/allBook";
+        } else if (booksList == null)
+        {
+            return "allBook";
+        }else {
+            model.addAttribute("list",booksList);
+            return "allBook";
+        }
     }
 }

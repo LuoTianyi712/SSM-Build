@@ -2,9 +2,9 @@ package com.neusoft.service;
 
 import com.neusoft.dao.BookMapper;
 import com.neusoft.pojo.Books;
-import com.neusoft.service.BookService;
 
 import java.util.List;
+import java.util.Map;
 
 public class BookServiceImpl implements BookService {
 
@@ -34,4 +34,13 @@ public class BookServiceImpl implements BookService {
     public List<Books> queryAllBook() {
         return bookMapper.queryAllBook();
     }
+
+    public List<Books> queryBookByName(String bookName) {
+        return bookMapper.queryBookByName(bookName);
+    }
+
+    public List<Books> queryBooks(Map<Object,Object> map) {
+        return bookMapper.queryBooks(map);
+    }
+
 }

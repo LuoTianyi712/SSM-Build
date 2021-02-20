@@ -21,11 +21,28 @@
 
     <select id="queryBookById" parameterType="int" resultType="Books">
         select * from ssmbuild.books
-        where bookID = #{bookID};
+        where bookID = #{bookId};
     </select>
 
     <select id="queryAllBook" resultType="Books">
         select * from ssmbuild.books;
+    </select>
+    
+    <select id="queryBookByName" parameterType="string" resultType="Books">
+        select * from ssmbuild.books
+        where bookName = #{bookName};
+    </select>
+
+    <select id="queryBooks" parameterType="map" resultType="Books">
+        select * from ssmbuild.books
+        <where>
+            <if test="bookID != null">
+                or bookID = #{bookID}
+            </if>
+            <if test="bookName != null">
+                or bookName like concat('%', #{bookName}, '%')
+            </if>
+        </where>
     </select>
     
 </mapper>
